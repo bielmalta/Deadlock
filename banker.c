@@ -41,8 +41,64 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
+    int numero_clientes = 0;
+    int caractere;
+    int ultimo_caractere = '\n';
+
+    while ((caractere = fgetc(arquivo)) != EOF) {
+        if (caractere == '\n') {
+            numero_clientes++;
+        }
+
+        ultimo_caractere = caractere;
+    }
+
+    if (ultimo_caractere != '\n') {
+        numero_clientes++;
+    }
+
+    if (numero_clientes == 0) {
+        fprintf(stderr, "Erro: customer.txt esta vazio.\n");
+        fclose(arquivo);
+        free(disponiveis);
+        return EXIT_FAILURE;
+    }
+
+    rewind(arquivo);
+
+    int **maximum = malloc(numero_clientes * sizeof(int *));
+
+    if (maximum == NULL) {
+        fprintf(stderr, "Erro: falha ao alocar memoria.\n");
+        fclose(arquivo);
+        free(disponiveis);
+        return EXIT_FAILURE;
+    }
+
+    for (int i = 0; i < numero_clientes; i++) {
+        maximum[i] = malloc(numero_recursos * sizeof(int));
+
+        if (maximum[i] == NULL) {
+            fprintf(stderr, "Erro: falha ao alocar memoria.\n");
+
+            for (int j = 0; j < i; j++) {
+                free(maximum[j]);
+            }
+
+            free(maximum);
+            fclose(arquivo);
+            free(disponiveis);
+            return EXIT_FAILURE;
+        }
+    }
+
     fclose(arquivo);
 
+    for (int i = 0; i < numero_clientes; i++) {
+        free(maximum[i]);
+    }
+
+    free(maximum);
     free(disponiveis);
 
     return EXIT_SUCCESS;
