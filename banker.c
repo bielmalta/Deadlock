@@ -164,11 +164,49 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
-    fclose(arquivo);
+    FILE *comandos = fopen("commands.txt", "r");
 
-    for (int i = 0; i < numero_clientes; i++) {
-        free(maximum[i]);
+    if (comandos == NULL) {
+        fprintf(stderr, "Erro: nao foi possivel abrir commands.txt.\n");
+
+        for (int i = 0; i < numero_clientes; i++) {
+            free(maximum[i]);
+        }
+
+        free(maximum);
+        free(disponiveis);
+        return EXIT_FAILURE;
     }
+
+    char *linha_comando = NULL;
+    size_t tamanho_comando = 0;
+
+    while (getline(&linha_comando, &tamanho_comando, comandos) != -1) {
+        if (linha_comando[0] == '*') {
+            
+        } else if (linha_comando[0] == 'R' && linha_comando[1] == 'Q') {
+    
+        } else if (linha_comando[0] == 'R' && linha_comando[1] == 'L') {
+    
+        } else {
+            fprintf(stderr, "Erro: comando invalido em commands.txt.\n");
+
+            free(linha_comando);
+            fclose(comandos);
+
+            for (int i = 0; i < numero_clientes; i++) {
+                free(maximum[i]);
+            }
+
+            free(maximum);
+            free(disponiveis);
+            return EXIT_FAILURE;
+        }
+    }
+
+    free(linha_comando);
+
+    fclose(comandos);
 
     free(maximum);
     free(disponiveis);
