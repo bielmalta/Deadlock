@@ -1,7 +1,10 @@
+#define _POSIX_C_SOURCE 200809L
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <errno.h>
+#include <sys/types.h>
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -90,6 +93,75 @@ int main(int argc, char *argv[]) {
             free(disponiveis);
             return EXIT_FAILURE;
         }
+    }
+
+    
+    char *linha = NULL;
+    size_t tamanho = 0;
+    int formato_valido = 1;
+
+    for (int i = 0; i < numero_clientes && formato_valido; i++) {
+        if (getline(&linha, &tamanho, arquivo) == -1) {
+            formato_valido = 0;
+            break;
+        }
+
+        char *p = linha;
+
+        for (int j = 0; j < numero_recursos; j++) {
+            if (*p < '0' || *p > '9') {
+                formato_valido = 0;
+                break;
+            }
+
+            char *fim;
+            errno = 0;
+            long valor = strtol(p, &fim, 10);
+
+            if (errno == ERANGE || valor > INT_MAX) {
+                formato_valido = 0;
+                break;
+            }
+
+            maximum[i][j] = (int)valor;
+            p = fim;
+
+            if (j < numero_recursos - 1) {
+                if (*p != ',') {
+                    formato_valido = 0;
+                    break;
+                }
+
+                p++;
+            }
+        }
+
+        if (formato_valido && *p == '\r') {
+            p++;
+        }
+
+        if (formato_valido && *p == '\n') {
+            p++;
+        }
+
+        if (formato_valido && *p != '\0') {
+            formato_valido = 0;
+        }
+    }
+
+    free(linha);
+
+    if (!formato_valido || ferror(arquivo)) {
+        fprintf(stderr, "Erro: formato invalido em customer.txt.\n");
+
+        for (int i = 0; i < numero_clientes; i++) {
+            free(maximum[i]);
+        }
+
+        free(maximum);
+        fclose(arquivo);
+        free(disponiveis);
+        return EXIT_FAILURE;
     }
 
     fclose(arquivo);
