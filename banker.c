@@ -4,9 +4,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <errno.h>
-#include <sys/types.h>
 #include <string.h>
-#include <ctype.h>
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -15,7 +13,6 @@ int main(int argc, char *argv[]) {
     }
 
     int numero_recursos = argc - 1;
-
     int *disponiveis = malloc(numero_recursos * sizeof(int));
 
     if (disponiveis == NULL) {
@@ -28,8 +25,7 @@ int main(int argc, char *argv[]) {
         errno = 0;
         long valor = strtol(argv[i + 1], &fim, 10);
 
-        if (errno == ERANGE || fim == argv[i + 1] ||
-            *fim != '\0' || valor < 0 || valor > INT_MAX) {
+        if (errno == ERANGE || fim == argv[i + 1] || *fim != '\0' || valor < 0 || valor > INT_MAX) {
             fprintf(stderr, "Erro: quantidade de recursos invalida.\n");
             free(disponiveis);
             return EXIT_FAILURE;
@@ -54,8 +50,14 @@ int main(int argc, char *argv[]) {
         if (caractere == '\n') {
             numero_clientes++;
         }
-
         ultimo_caractere = caractere;
+    }
+
+    if (ferror(arquivo)) {
+        fprintf(stderr, "Erro: falha na leitura de customer.txt.\n");
+        fclose(arquivo);
+        free(disponiveis);
+        return EXIT_FAILURE;
     }
 
     if (ultimo_caractere != '\n') {
@@ -97,7 +99,6 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    
     char *linha = NULL;
     size_t tamanho = 0;
     int formato_valido = 1;
@@ -133,7 +134,6 @@ int main(int argc, char *argv[]) {
                     formato_valido = 0;
                     break;
                 }
-
                 p++;
             }
         }
@@ -166,6 +166,8 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
+    fclose(arquivo);
+
     FILE *comandos = fopen("commands.txt", "r");
 
     if (comandos == NULL) {
@@ -182,89 +184,91 @@ int main(int argc, char *argv[]) {
 
     char *linha_comando = NULL;
     size_t tamanho_comando = 0;
-
-    
     int comandos_validos = 1;
 
     while (getline(&linha_comando, &tamanho_comando, comandos) != -1) {
         if (strcmp(linha_comando, "*\n") == 0 || strcmp(linha_comando, "*\r\n") == 0 || strcmp(linha_comando, "*") == 0) {
+            continue;
+        }
 
-        } else if ((strncmp(linha_comando, "RQ", 2) == 0 || strncmp(linha_comando, "RL", 2) == 0) &&
-                   isspace((unsigned char)linha_comando[2])) {
-
-            char *p = linha_comando + 2;
-
-            for (int i = 0; i <= numero_recursos; i++) {
-                if (!isspace((unsigned char)*p)) {
-                    comandos_validos = 0;
-                    break;
-                }
-
-                while (isspace((unsigned char)*p)) {
-                    p++;
-                }
-
-                if (!isdigit((unsigned char)*p)) {
-                    comandos_validos = 0;
-                    break;
-                }
-
-                char *fim;
-                errno = 0;
-                long valor = strtol(p, &fim, 10);
-
-                if (errno == ERANGE || valor > INT_MAX) {
-                    comandos_validos = 0;
-                    break;
-                }
-
-                if (i == 0 && valor >= numero_clientes) {
-                    comandos_validos = 0;
-                    break;
-                }
-
-                p = fim;
-            }
-
-            if (comandos_validos) {
-                while (isspace((unsigned char)*p)) {
-                    p++;
-                }
-
-                if (*p != '\0') {
-                    comandos_validos = 0;
-                }
-            }
-        } else {
+        if (strncmp(linha_comando, "RQ ", 3) != 0 && strncmp(linha_comando, "RL ", 3) != 0) {
             comandos_validos = 0;
+            break;
+        }
+
+        char *p = linha_comando + 2;
+
+        for (int i = 0; i <= numero_recursos; i++) {
+            if (*p != ' ' && *p != '\t') {
+                comandos_validos = 0;
+                break;
+            }
+
+            while (*p == ' ' || *p == '\t') {
+                p++;
+            }
+
+            if (*p < '0' || *p > '9') {
+                comandos_validos = 0;
+                break;
+            }
+
+            char *fim;
+            errno = 0;
+            long valor = strtol(p, &fim, 10);
+
+            if (errno == ERANGE || valor > INT_MAX) {
+                comandos_validos = 0;
+                break;
+            }
+
+            if (i == 0 && valor >= numero_clientes) {
+                comandos_validos = 0;
+                break;
+            }
+
+            p = fim;
         }
 
         if (!comandos_validos) {
             break;
         }
-    }
 
-    if (!comandos_validos || ferror(comandos)) {
-        fprintf(stderr, "Erro: formato invalido em commands.txt.\n");
-
-        free(linha_comando);
-        fclose(comandos);
-
-        for (int i = 0; i < numero_clientes; i++) {
-            free(maximum[i]);
+        while (*p == ' ' || *p == '\t') {
+            p++;
         }
 
-        free(maximum);
-        free(disponiveis);
-        return EXIT_FAILURE;
+        if (*p == '\r') {
+            p++;
+        }
+
+        if (*p == '\n') {
+            p++;
+        }
+
+        if (*p != '\0') {
+            comandos_validos = 0;
+            break;
+        }
+    }
+
+    if (ferror(comandos)) {
+        comandos_validos = 0;
     }
 
     free(linha_comando);
-
     fclose(comandos);
+
+    if (!comandos_validos) {
+        fprintf(stderr, "Erro: formato invalido em commands.txt.\n");
+    }
+
+    for (int i = 0; i < numero_clientes; i++) {
+        free(maximum[i]);
+    }
 
     free(maximum);
     free(disponiveis);
 
-    return EXIT_SUCCESS;
+    return comandos_validos ? EXIT_SUCCESS : EXIT_FAILURE;
 }
