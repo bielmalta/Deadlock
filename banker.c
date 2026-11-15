@@ -1,3 +1,4 @@
+
 #define _POSIX_C_SOURCE 200809L
 
 #include <stdio.h>
@@ -5,6 +6,93 @@
 #include <limits.h>
 #include <errno.h>
 #include <string.h>
+
+int **criar_matriz(int linhas, int colunas) {
+    int **matriz = calloc(linhas, sizeof(int *));
+
+    if (matriz == NULL) {
+        return NULL;
+    }
+
+    for (int i = 0; i < linhas; i++) {
+        matriz[i] = calloc(colunas, sizeof(int));
+
+        if (matriz[i] == NULL) {
+            for (int j = 0; j < i; j++) {
+                free(matriz[j]);
+            }
+
+            free(matriz);
+            return NULL;
+        }
+    }
+
+    return matriz;
+}
+
+void liberar_matriz(int **matriz, int linhas) {
+    if (matriz == NULL) {
+        return;
+    }
+
+    for (int i = 0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+
+    free(matriz);
+}
+
+int estado_seguro(int clientes, int recursos, int *disponiveis, int **allocation, int **need) {
+    long long *work = malloc(recursos * sizeof(long long));
+    int *finish = calloc(clientes, sizeof(int));
+
+    if (work == NULL || finish == NULL) {
+        free(work);
+        free(finish);
+        return -1;
+    }
+
+    for (int j = 0; j < recursos; j++) {
+        work[j] = disponiveis[j];
+    }
+
+    int concluidos = 0;
+    int progresso = 1;
+
+    while (concluidos < clientes && progresso) {
+        progresso = 0;
+
+        for (int i = 0; i < clientes; i++) {
+            if (finish[i]) {
+                continue;
+            }
+
+            int pode_terminar = 1;
+
+            for (int j = 0; j < recursos; j++) {
+                if (need[i][j] > work[j]) {
+                    pode_terminar = 0;
+                    break;
+                }
+            }
+
+            if (pode_terminar) {
+                for (int j = 0; j < recursos; j++) {
+                    work[j] += allocation[i][j];
+                }
+
+                finish[i] = 1;
+                concluidos++;
+                progresso = 1;
+            }
+        }
+    }
+
+    free(work);
+    free(finish);
+
+    return concluidos == clientes;
+}
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -50,6 +138,7 @@ int main(int argc, char *argv[]) {
         if (caractere == '\n') {
             numero_clientes++;
         }
+
         ultimo_caractere = caractere;
     }
 
@@ -73,30 +162,19 @@ int main(int argc, char *argv[]) {
 
     rewind(arquivo);
 
-    int **maximum = malloc(numero_clientes * sizeof(int *));
+    int **maximum = criar_matriz(numero_clientes, numero_recursos);
+    int **allocation = criar_matriz(numero_clientes, numero_recursos);
+    int **need = criar_matriz(numero_clientes, numero_recursos);
 
-    if (maximum == NULL) {
+    if (maximum == NULL || allocation == NULL || need == NULL) {
         fprintf(stderr, "Erro: falha ao alocar memoria.\n");
+
+        liberar_matriz(maximum, numero_clientes);
+        liberar_matriz(allocation, numero_clientes);
+        liberar_matriz(need, numero_clientes);
         fclose(arquivo);
         free(disponiveis);
         return EXIT_FAILURE;
-    }
-
-    for (int i = 0; i < numero_clientes; i++) {
-        maximum[i] = malloc(numero_recursos * sizeof(int));
-
-        if (maximum[i] == NULL) {
-            fprintf(stderr, "Erro: falha ao alocar memoria.\n");
-
-            for (int j = 0; j < i; j++) {
-                free(maximum[j]);
-            }
-
-            free(maximum);
-            fclose(arquivo);
-            free(disponiveis);
-            return EXIT_FAILURE;
-        }
     }
 
     char *linha = NULL;
@@ -127,6 +205,7 @@ int main(int argc, char *argv[]) {
             }
 
             maximum[i][j] = (int)valor;
+            need[i][j] = maximum[i][j];
             p = fim;
 
             if (j < numero_recursos - 1) {
@@ -134,6 +213,7 @@ int main(int argc, char *argv[]) {
                     formato_valido = 0;
                     break;
                 }
+
                 p++;
             }
         }
@@ -155,12 +235,9 @@ int main(int argc, char *argv[]) {
 
     if (!formato_valido || ferror(arquivo)) {
         fprintf(stderr, "Erro: formato invalido em customer.txt.\n");
-
-        for (int i = 0; i < numero_clientes; i++) {
-            free(maximum[i]);
-        }
-
-        free(maximum);
+        liberar_matriz(maximum, numero_clientes);
+        liberar_matriz(allocation, numero_clientes);
+        liberar_matriz(need, numero_clientes);
         fclose(arquivo);
         free(disponiveis);
         return EXIT_FAILURE;
@@ -172,12 +249,9 @@ int main(int argc, char *argv[]) {
 
     if (comandos == NULL) {
         fprintf(stderr, "Erro: nao foi possivel abrir commands.txt.\n");
-
-        for (int i = 0; i < numero_clientes; i++) {
-            free(maximum[i]);
-        }
-
-        free(maximum);
+        liberar_matriz(maximum, numero_clientes);
+        liberar_matriz(allocation, numero_clientes);
+        liberar_matriz(need, numero_clientes);
         free(disponiveis);
         return EXIT_FAILURE;
     }
@@ -263,11 +337,21 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Erro: formato invalido em commands.txt.\n");
     }
 
-    for (int i = 0; i < numero_clientes; i++) {
-        free(maximum[i]);
+    if (comandos_validos) {
+        int seguro = estado_seguro(
+            numero_clientes, numero_recursos,
+            disponiveis, allocation, need
+        );
+
+        if (seguro == -1) {
+            fprintf(stderr, "Erro: falha ao alocar memoria.\n");
+            comandos_validos = 0;
+        }
     }
 
-    free(maximum);
+    liberar_matriz(maximum, numero_clientes);
+    liberar_matriz(allocation, numero_clientes);
+    liberar_matriz(need, numero_clientes);
     free(disponiveis);
 
     return comandos_validos ? EXIT_SUCCESS : EXIT_FAILURE;
