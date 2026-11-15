@@ -1,86 +1,114 @@
-
 #define _POSIX_C_SOURCE 200809L
 
+#include <errno.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
-#include <errno.h>
 #include <string.h>
 
-int **criar_matriz(int linhas, int colunas) {
-    int **matriz = calloc(linhas, sizeof(int *));
-
-    if (matriz == NULL) {
-        return NULL;
-    }
+static int **criar_matriz(int linhas, int colunas) {
+    int **matriz = calloc((size_t)linhas, sizeof(*matriz));
+    if (matriz == NULL) return NULL;
 
     for (int i = 0; i < linhas; i++) {
-        matriz[i] = calloc(colunas, sizeof(int));
-
+        matriz[i] = calloc((size_t)colunas, sizeof(**matriz));
         if (matriz[i] == NULL) {
-            for (int j = 0; j < i; j++) {
-                free(matriz[j]);
-            }
-
+            for (int j = 0; j < i; j++) free(matriz[j]);
             free(matriz);
             return NULL;
         }
     }
-
     return matriz;
 }
 
-void liberar_matriz(int **matriz, int linhas) {
-    if (matriz == NULL) {
-        return;
-    }
-
-    for (int i = 0; i < linhas; i++) {
-        free(matriz[i]);
-    }
-
+static void liberar_matriz(int **matriz, int linhas) {
+    if (matriz == NULL) return;
+    for (int i = 0; i < linhas; i++) free(matriz[i]);
     free(matriz);
 }
 
-int estado_seguro(int clientes, int recursos, int *disponiveis, int **allocation, int **need) {
-    long long *work = malloc(recursos * sizeof(long long));
-    int *finish = calloc(clientes, sizeof(int));
+static int numero_inteiro(const char **p, int *valor) {
+    if (**p < '0' || **p > '9') return 0;
+    char *fim;
+    errno = 0;
+    long numero = strtol(*p, &fim, 10);
+    if (errno == ERANGE || numero > INT_MAX) return 0;
+    *valor = (int)numero;
+    *p = fim;
+    return 1;
+}
 
+static int fim_linha(const char *p) {
+    if (*p == '\r') p++;
+    if (*p == '\n') p++;
+    return *p == '\0';
+}
+
+static int ler_cliente(const char *linha, int recursos, int *maximum) {
+    const char *p = linha;
+    for (int j = 0; j < recursos; j++) {
+        if (!numero_inteiro(&p, &maximum[j])) return 0;
+        if (j + 1 < recursos) {
+            if (*p != ',') return 0;
+            p++;
+        }
+    }
+    return fim_linha(p);
+}
+
+static int ler_comando(const char *linha, int clientes, int recursos, char *tipo, int *cliente, int *valores) {
+    if (linha[0] == '*') {
+        if (!fim_linha(linha + 1)) return 0;
+        *tipo = '*';
+        return 1;
+    }
+
+    if (linha[0] != 'R' || (linha[1] != 'Q' && linha[1] != 'L')) return 0;
+    *tipo = linha[1];
+    const char *p = linha + 2;
+
+    for (int j = -1; j < recursos; j++) {
+        if (*p != ' ' && *p != '\t') return 0;
+        while (*p == ' ' || *p == '\t') p++;
+        int valor;
+        if (!numero_inteiro(&p, &valor)) return 0;
+        if (j == -1) {
+            if (valor >= clientes) return 0;
+            *cliente = valor;
+        } else {
+            valores[j] = valor;
+        }
+    }
+    while (*p == ' ' || *p == '\t') p++;
+    return fim_linha(p);
+}
+
+static int estado_seguro(int clientes, int recursos, const int *available, int **allocation, int **need) {
+    long long *work = malloc((size_t)recursos * sizeof(*work));
+    int *finish = calloc((size_t)clientes, sizeof(*finish));
     if (work == NULL || finish == NULL) {
         free(work);
         free(finish);
         return -1;
     }
 
-    for (int j = 0; j < recursos; j++) {
-        work[j] = disponiveis[j];
-    }
-
+    for (int j = 0; j < recursos; j++) work[j] = available[j];
     int concluidos = 0;
     int progresso = 1;
 
     while (concluidos < clientes && progresso) {
         progresso = 0;
-
         for (int i = 0; i < clientes; i++) {
-            if (finish[i]) {
-                continue;
-            }
-
+            if (finish[i]) continue;
             int pode_terminar = 1;
-
             for (int j = 0; j < recursos; j++) {
                 if (need[i][j] > work[j]) {
                     pode_terminar = 0;
                     break;
                 }
             }
-
             if (pode_terminar) {
-                for (int j = 0; j < recursos; j++) {
-                    work[j] += allocation[i][j];
-                }
-
+                for (int j = 0; j < recursos; j++) work[j] += allocation[i][j];
                 finish[i] = 1;
                 concluidos++;
                 progresso = 1;
@@ -90,269 +118,222 @@ int estado_seguro(int clientes, int recursos, int *disponiveis, int **allocation
 
     free(work);
     free(finish);
-
     return concluidos == clientes;
+}
+
+static void imprimir_vetor(FILE *saida, const int *vetor, int recursos) {
+    for (int j = 0; j < recursos; j++) {
+        if (j > 0) fputc(' ', saida);
+        fprintf(saida, "%d", vetor[j]);
+    }
+}
+
+static void imprimir_estado(FILE *saida, int clientes, int recursos, const int *available, int **maximum, int **allocation, int **need) {
+    fprintf(saida, "MAXIMUM | ALLOCATION | NEED\n");
+    for (int i = 0; i < clientes; i++) {
+        imprimir_vetor(saida, maximum[i], recursos);
+        fprintf(saida, " | ");
+        imprimir_vetor(saida, allocation[i], recursos);
+        fprintf(saida, " | ");
+        imprimir_vetor(saida, need[i], recursos);
+        fputc('\n', saida);
+    }
+    fprintf(saida, "AVAILABLE ");
+    imprimir_vetor(saida, available, recursos);
+    fputc('\n', saida);
+}
+
+static void erro(const char *mensagem) {
+    fprintf(stderr, "Erro: %s\n", mensagem);
 }
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(stderr, "Erro: informe a quantidade de instancias de cada recurso.\n");
+        erro("informe a quantidade de instancias de cada recurso.");
         return EXIT_FAILURE;
     }
 
-    int numero_recursos = argc - 1;
-    int *disponiveis = malloc(numero_recursos * sizeof(int));
-
-    if (disponiveis == NULL) {
-        fprintf(stderr, "Erro: falha ao alocar memoria.\n");
-        return EXIT_FAILURE;
-    }
-
-    for (int i = 0; i < numero_recursos; i++) {
-        char *fim;
-        errno = 0;
-        long valor = strtol(argv[i + 1], &fim, 10);
-
-        if (errno == ERANGE || fim == argv[i + 1] || *fim != '\0' || valor < 0 || valor > INT_MAX) {
-            fprintf(stderr, "Erro: quantidade de recursos invalida.\n");
-            free(disponiveis);
-            return EXIT_FAILURE;
-        }
-
-        disponiveis[i] = (int)valor;
-    }
-
-    FILE *arquivo = fopen("customer.txt", "r");
-
-    if (arquivo == NULL) {
-        fprintf(stderr, "Erro: nao foi possivel abrir customer.txt.\n");
-        free(disponiveis);
-        return EXIT_FAILURE;
-    }
-
-    int numero_clientes = 0;
-    int caractere;
-    int ultimo_caractere = '\n';
-
-    while ((caractere = fgetc(arquivo)) != EOF) {
-        if (caractere == '\n') {
-            numero_clientes++;
-        }
-
-        ultimo_caractere = caractere;
-    }
-
-    if (ferror(arquivo)) {
-        fprintf(stderr, "Erro: falha na leitura de customer.txt.\n");
-        fclose(arquivo);
-        free(disponiveis);
-        return EXIT_FAILURE;
-    }
-
-    if (ultimo_caractere != '\n') {
-        numero_clientes++;
-    }
-
-    if (numero_clientes == 0) {
-        fprintf(stderr, "Erro: customer.txt esta vazio.\n");
-        fclose(arquivo);
-        free(disponiveis);
-        return EXIT_FAILURE;
-    }
-
-    rewind(arquivo);
-
-    int **maximum = criar_matriz(numero_clientes, numero_recursos);
-    int **allocation = criar_matriz(numero_clientes, numero_recursos);
-    int **need = criar_matriz(numero_clientes, numero_recursos);
-
-    if (maximum == NULL || allocation == NULL || need == NULL) {
-        fprintf(stderr, "Erro: falha ao alocar memoria.\n");
-
-        liberar_matriz(maximum, numero_clientes);
-        liberar_matriz(allocation, numero_clientes);
-        liberar_matriz(need, numero_clientes);
-        fclose(arquivo);
-        free(disponiveis);
-        return EXIT_FAILURE;
-    }
-
+    int recursos = argc - 1;
+    int *available = NULL, *valores = NULL;
+    int **maximum = NULL, **allocation = NULL, **need = NULL;
+    FILE *clientes_arquivo = NULL, *comandos = NULL, *saida = NULL;
     char *linha = NULL;
     size_t tamanho = 0;
-    int formato_valido = 1;
+    int clientes = 0;
+    int status = EXIT_FAILURE;
 
-    for (int i = 0; i < numero_clientes && formato_valido; i++) {
-        if (getline(&linha, &tamanho, arquivo) == -1) {
-            formato_valido = 0;
-            break;
+    available = malloc((size_t)recursos * sizeof(*available));
+    if (available == NULL) {
+        erro("falha ao alocar memoria.");
+        goto finalizar;
+    }
+
+    for (int j = 0; j < recursos; j++) {
+        const char *p = argv[j + 1];
+        if (!numero_inteiro(&p, &available[j]) || *p != '\0') {
+            erro("quantidade de recursos invalida.");
+            goto finalizar;
         }
+    }
 
-        char *p = linha;
+    clientes_arquivo = fopen("customer.txt", "r");
+    if (clientes_arquivo == NULL) {
+        erro("nao foi possivel abrir customer.txt.");
+        goto finalizar;
+    }
 
-        for (int j = 0; j < numero_recursos; j++) {
-            if (*p < '0' || *p > '9') {
-                formato_valido = 0;
-                break;
+    int c, ultimo = '\n';
+    while ((c = fgetc(clientes_arquivo)) != EOF) {
+        if (c == '\n') {
+            if (clientes == INT_MAX) {
+                erro("quantidade de clientes invalida.");
+                goto finalizar;
             }
+            clientes++;
+        }
+        ultimo = c;
+    }
+    if (ferror(clientes_arquivo)) {
+        erro("falha na leitura de customer.txt.");
+        goto finalizar;
+    }
+    if (ultimo != '\n') clientes++;
+    if (clientes == 0) {
+        erro("customer.txt esta vazio.");
+        goto finalizar;
+    }
+    rewind(clientes_arquivo);
 
-            char *fim;
-            errno = 0;
-            long valor = strtol(p, &fim, 10);
+    maximum = criar_matriz(clientes, recursos);
+    allocation = criar_matriz(clientes, recursos);
+    need = criar_matriz(clientes, recursos);
+    valores = malloc((size_t)recursos * sizeof(*valores));
+    if (maximum == NULL || allocation == NULL || need == NULL || valores == NULL) {
+        erro("falha ao alocar memoria.");
+        goto finalizar;
+    }
 
-            if (errno == ERANGE || valor > INT_MAX) {
-                formato_valido = 0;
-                break;
-            }
-
-            maximum[i][j] = (int)valor;
+    for (int i = 0; i < clientes; i++) {
+        if (getline(&linha, &tamanho, clientes_arquivo) == -1 || !ler_cliente(linha, recursos, maximum[i])) {
+            erro("formato invalido em customer.txt.");
+            goto finalizar;
+        }
+        for (int j = 0; j < recursos; j++) {
             need[i][j] = maximum[i][j];
-            p = fim;
-
-            if (j < numero_recursos - 1) {
-                if (*p != ',') {
-                    formato_valido = 0;
-                    break;
-                }
-
-                p++;
-            }
-        }
-
-        if (formato_valido && *p == '\r') {
-            p++;
-        }
-
-        if (formato_valido && *p == '\n') {
-            p++;
-        }
-
-        if (formato_valido && *p != '\0') {
-            formato_valido = 0;
         }
     }
-
-    free(linha);
-
-    if (!formato_valido || ferror(arquivo)) {
-        fprintf(stderr, "Erro: formato invalido em customer.txt.\n");
-        liberar_matriz(maximum, numero_clientes);
-        liberar_matriz(allocation, numero_clientes);
-        liberar_matriz(need, numero_clientes);
-        fclose(arquivo);
-        free(disponiveis);
-        return EXIT_FAILURE;
+    if (ferror(clientes_arquivo)) {
+        erro("falha na leitura de customer.txt.");
+        goto finalizar;
     }
+    fclose(clientes_arquivo);
+    clientes_arquivo = NULL;
 
-    fclose(arquivo);
-
-    FILE *comandos = fopen("commands.txt", "r");
-
+    comandos = fopen("commands.txt", "r");
     if (comandos == NULL) {
-        fprintf(stderr, "Erro: nao foi possivel abrir commands.txt.\n");
-        liberar_matriz(maximum, numero_clientes);
-        liberar_matriz(allocation, numero_clientes);
-        liberar_matriz(need, numero_clientes);
-        free(disponiveis);
-        return EXIT_FAILURE;
+        erro("nao foi possivel abrir commands.txt.");
+        goto finalizar;
+    }
+    saida = fopen("result.txt", "w");
+    if (saida == NULL) {
+        erro("nao foi possivel criar result.txt.");
+        goto finalizar;
     }
 
-    char *linha_comando = NULL;
-    size_t tamanho_comando = 0;
-    int comandos_validos = 1;
-
-    while (getline(&linha_comando, &tamanho_comando, comandos) != -1) {
-        if (strcmp(linha_comando, "*\n") == 0 || strcmp(linha_comando, "*\r\n") == 0 || strcmp(linha_comando, "*") == 0) {
+    while (getline(&linha, &tamanho, comandos) != -1) {
+        char tipo;
+        int cliente = 0;
+        if (!ler_comando(linha, clientes, recursos, &tipo, &cliente, valores)) {
+            erro("formato invalido em commands.txt.");
+            goto finalizar;
+        }
+        if (tipo == '*') {
+            imprimir_estado(saida, clientes, recursos, available, maximum, allocation, need);
             continue;
         }
 
-        if (strncmp(linha_comando, "RQ ", 3) != 0 && strncmp(linha_comando, "RL ", 3) != 0) {
-            comandos_validos = 0;
-            break;
-        }
-
-        char *p = linha_comando + 2;
-
-        for (int i = 0; i <= numero_recursos; i++) {
-            if (*p != ' ' && *p != '\t') {
-                comandos_validos = 0;
-                break;
+        if (tipo == 'L') {
+            for (int j = 0; j < recursos; j++) {
+                if (valores[j] > allocation[cliente][j]) {
+                    erro("liberacao excede os recursos alocados.");
+                    goto finalizar;
+                }
             }
-
-            while (*p == ' ' || *p == '\t') {
-                p++;
+            for (int j = 0; j < recursos; j++) {
+                available[j] += valores[j];
+                allocation[cliente][j] -= valores[j];
+                need[cliente][j] += valores[j];
             }
+            fprintf(saida, "Release from customer %d the resources ", cliente);
+            imprimir_vetor(saida, valores, recursos);
+            fputc('\n', saida);
+            continue;
+        }
 
-            if (*p < '0' || *p > '9') {
-                comandos_validos = 0;
-                break;
+        int excede_maximo = 0, insuficiente = 0;
+        for (int j = 0; j < recursos; j++) {
+            if (valores[j] > need[cliente][j]) excede_maximo = 1;
+            if (valores[j] > available[j]) insuficiente = 1;
+        }
+        if (excede_maximo) {
+            fprintf(saida, "The customer %d request ", cliente);
+            imprimir_vetor(saida, valores, recursos);
+            fprintf(saida, " was denied because exceed its maximum allocation\n");
+        } else if (insuficiente) {
+            fprintf(saida, "The resources ");
+            imprimir_vetor(saida, available, recursos);
+            fprintf(saida, " are not enough to customer %d request ", cliente);
+            imprimir_vetor(saida, valores, recursos);
+            fputc('\n', saida);
+        } else {
+            for (int j = 0; j < recursos; j++) {
+                available[j] -= valores[j];
+                allocation[cliente][j] += valores[j];
+                need[cliente][j] -= valores[j];
             }
-
-            char *fim;
-            errno = 0;
-            long valor = strtol(p, &fim, 10);
-
-            if (errno == ERANGE || valor > INT_MAX) {
-                comandos_validos = 0;
-                break;
+            int seguro = estado_seguro(clientes, recursos, available, allocation, need);
+            if (seguro == -1) {
+                erro("falha ao alocar memoria.");
+                goto finalizar;
             }
-
-            if (i == 0 && valor >= numero_clientes) {
-                comandos_validos = 0;
-                break;
+            if (!seguro) {
+                for (int j = 0; j < recursos; j++) {
+                    available[j] += valores[j];
+                    allocation[cliente][j] -= valores[j];
+                    need[cliente][j] += valores[j];
+                }
+                fprintf(saida, "The customer %d request ", cliente);
+                imprimir_vetor(saida, valores, recursos);
+                fprintf(saida, " was denied because result in an unsafe state\n");
+            } else {
+                fprintf(saida, "Allocate to customer %d the resources ", cliente);
+                imprimir_vetor(saida, valores, recursos);
+                fputc('\n', saida);
             }
-
-            p = fim;
-        }
-
-        if (!comandos_validos) {
-            break;
-        }
-
-        while (*p == ' ' || *p == '\t') {
-            p++;
-        }
-
-        if (*p == '\r') {
-            p++;
-        }
-
-        if (*p == '\n') {
-            p++;
-        }
-
-        if (*p != '\0') {
-            comandos_validos = 0;
-            break;
         }
     }
 
     if (ferror(comandos)) {
-        comandos_validos = 0;
+        erro("falha na leitura de commands.txt.");
+        goto finalizar;
     }
-
-    free(linha_comando);
-    fclose(comandos);
-
-    if (!comandos_validos) {
-        fprintf(stderr, "Erro: formato invalido em commands.txt.\n");
+    if (fclose(saida) != 0) {
+        saida = NULL;
+        erro("falha na escrita de result.txt.");
+        goto finalizar;
     }
+    saida = NULL;
+    status = EXIT_SUCCESS;
 
-    if (comandos_validos) {
-        int seguro = estado_seguro(
-            numero_clientes, numero_recursos,
-            disponiveis, allocation, need
-        );
-
-        if (seguro == -1) {
-            fprintf(stderr, "Erro: falha ao alocar memoria.\n");
-            comandos_validos = 0;
-        }
-    }
-
-    liberar_matriz(maximum, numero_clientes);
-    liberar_matriz(allocation, numero_clientes);
-    liberar_matriz(need, numero_clientes);
-    free(disponiveis);
-
-    return comandos_validos ? EXIT_SUCCESS : EXIT_FAILURE;
+finalizar:
+    free(linha);
+    if (clientes_arquivo != NULL) fclose(clientes_arquivo);
+    if (comandos != NULL) fclose(comandos);
+    if (saida != NULL) fclose(saida);
+    liberar_matriz(maximum, clientes);
+    liberar_matriz(allocation, clientes);
+    liberar_matriz(need, clientes);
+    free(valores);
+    free(available);
+    return status;
 }
