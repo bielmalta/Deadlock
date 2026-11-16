@@ -1,0 +1,1079 @@
+Script started on 2026-11-12 14:58:21-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="179" LINES="12"]
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ 
+[K
+]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ 
+[K
+]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7m./banker 10 5 7[27m./banker 10 5 7
+[?2004l
+bash: ./banker: No such file or directory
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ makeclena[K[K[K[K[K clean
+[?2004l
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean./banker 10 5 7[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmake
+[?2004l
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+[01m[Kbanker.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Kbanker.c:42:9:[m[K [01;35m[Kwarning: [m[Kpointer ‘[01m[Kdisponiveis[m[K’ may be used after ‘[01m[Kfree[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wuse-after-free-Wuse-after-free]8;;[m[K]
+   42 |         [01;35m[Kfree(disponiveis)[m[K;
+      |         [01;35m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[Kbanker.c:36:5:[m[K [01;36m[Knote: [m[Kcall to ‘[01m[Kfree[m[K’ here
+   36 |     [01;36m[Kfree(disponiveis)[m[K;
+      |     [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+[?2004l
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make
+[?2004l
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+[?2004l
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git status
+[?2004l
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31m.gitignore[m
+	[31mbanker.c[m
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+	[31mmakefile[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mgit add banker.c makefile .gitignore[27mgit add banker.c makefile .gitignore
+[?2004l
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mgit diff --cached --stat[27mgit diff --cached --stat
+[?2004l
+[?1h=
+ .gitignore |  3 [32m+++[m[m
+ banker.c   | 49 [32m+++++++++++++++++++++++++++++++++++++++++++++++++[m[m
+ makefile   |  8 [32m++++++++[m[m
+ 3 files changed, 60 insertions(+)[m
+
+[K[?1l>[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git commit -m "estrutura inicial do banker.c e makefile"
+[?2004l
+[main c5ce9ca] estrutura inicial do banker.c e makefile
+ 3 files changed, 60 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 banker.c
+ create mode 100644 makefile
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git status
+[?2004l
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+}[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clena[K[Kan
+[?2004lrm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ban[K[K[K/banker[K[K[K[K[K[K[K./banker 10 5 7
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ echo $?
+[?2004l0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+[?2004lrm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git add banker.c
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git commit -m "alocacao da [7mmatriz de recursos maximos dos clientes"[27mmatriz de recursos maximos dos clientes"
+[?2004l[main ef17ffd] alocacao da matriz de recursos maximos dos clientes
+ 1 file changed, 56 insertions(+)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git sttatus[K[K[K[K[Katus
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git push origin main
+[?2004lEnumerating objects: 9, done.
+Counting objects:  11% (1/9)Counting objects:  22% (2/9)Counting objects:  33% (3/9)Counting objects:  44% (4/9)Counting objects:  55% (5/9)Counting objects:  66% (6/9)Counting objects:  77% (7/9)Counting objects:  88% (8/9)Counting objects: 100% (9/9)Counting objects: 100% (9/9), done.
+Delta compression using up to 16 threads
+Compressing objects:  14% (1/7)Compressing objects:  28% (2/7)Compressing objects:  42% (3/7)Compressing objects:  57% (4/7)Compressing objects:  71% (5/7)Compressing objects:  85% (6/7)Compressing objects: 100% (7/7)Compressing objects: 100% (7/7), done.
+Writing objects:  12% (1/8)Writing objects:  25% (2/8)Writing objects:  37% (3/8)Writing objects:  50% (4/8)Writing objects:  62% (5/8)Writing objects:  75% (6/8)Writing objects:  87% (7/8)Writing objects: 100% (8/8)Writing objects: 100% (8/8), 1.41 KiB | 96.00 KiB/s, done.
+Total 8 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), done.[K
+To https://github.com/bielmalta/Deadlock.git
+   259ba77..ef17ffd  main -> main
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git satt[K[K[Ktatus
+[?2004lOn branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ Script started on 2026-11-13 12:15:55-03:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="180" LINES="11"]
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ date
+[?2004lFri Nov 13 12:16:06 -03 2026
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ whoami
+[?2004lbielmalta
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ pwd
+[?2004l/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7m./banker 10 5 7[27m
+[7mecho $?[27m[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004l0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mcp customer.txt customer_backup.txt[27mcp customer.txt customer_backup.txt
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mprintf '7,5,3,9\n3,2,2\n9,0,2\n2,2,2\n4,3,3\n' > customer.txt[27mprintf '7,5,3,9\n3,2,2\n9,0,2\n2,2,2\n4,3,3\n' > customer.txt
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7m./banker 10 5 7[27m
+[7mecho $?[27m[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004lErro: formato invalido em customer.txt.
+1
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mmv customer_backup.txt customer.txt[27mmv customer_backup.txt customer.txt
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clçean[K[K[K[Kean
+[?2004lrm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git add banker.c
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git commit -m "implementando leitura e validação[K[K[Kcao dos clientes"
+[?2004l[main bd08280] implementando leitura e validacao dos clientes
+ 1 file changed, 72 insertions(+)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git status
+[?2004lOn branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git push origin main
+[?2004lEnumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 825 bytes | 29.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To https://github.com/bielmalta/Deadlock.git
+   ef17ffd..bd08280  main -> main
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7m./banker 10 5 7[27m
+[7mecho $?[27m[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004l0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make cçe[K[Klena[K[Kan
+[?2004lrm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mmake[27m
+[7m./banker 10 5 7[27m
+[7mecho $?[27m[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make
+./banker 10 5 7
+echo $?
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clena[K[Kan
+[?2004lrm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mmake[27m
+[7m./banker 10 5 7[27m
+[7mecho $?[27m[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make
+./banker 10 5 7
+echo $?
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+[?2004lrm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git add banker.c
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git cmom[K[K[Kommiyt[K[Kt -m "impleme[K[K[K[K[K[K[Kleitru[K[K[Ktura e ident[Ktifical[Kçao0[K[K[K[Kcao dos coim[K[Kmandos"
+[?2004l[main 53d6501] leitura e identificacao dos comandos
+ 1 file changed, 41 insertions(+), 3 deletions(-)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ git push origin main
+[?2004lEnumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 619 bytes | 34.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To https://github.com/bielmalta/Deadlock.git
+   bd08280..53d6501  main -> main
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ script -a -f evidencioas [K[K[K[K[K[K[Kncias.log
+[?2004lScript started, output log file is 'evidencias.log'.
+Script started on 2026-11-15 10:51:33-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="179" LINES="11"]
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee
+[?2004l
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ..//bbaannkkeerr  1100  55  77
+[?2004l
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ eecchhoo  $$//[K[K??
+[?2004l
+[?2004l0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ 0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mcp commands.txt commands_backup.txt[27m[7mcp commands.txt commands_backup.txt[27mcp commands.txt commands_backup.txt
+cp commands.txt commands_backup.txt
+[?2004l[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mprintf '* 10\n' > commands.txt[27m[7mprintf '* 10\n' > commands.txt[27mprintf '* 10\n' > commands.txt
+[?2004lprintf '* 10\n' > commands.txt
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7m./banker 10 5 7[27m
+[7mecho $?[27m[7m./banker 10 5 7[27m
+[7mecho $?[27m[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004l[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004lErro: comando invalido em commands.txt.
+Erro: comando invalido em commands.txt.
+1
+1
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mmv commands_backup.txt commands.txt[27m[7mmv commands_backup.txt commands.txt[27mmv commands_backup.txt commands.txt
+[?2004lmv commands_backup.txt commands.txt
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee  cclleeaann
+[?2004l
+[?2004lrm -f banker.o banker
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee
+[?2004l
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7m./banker 10 5 7[27m
+[7mecho $?[27m[7m./banker 10 5 7[27m
+[7mecho $?[27m[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004l[?2004l0
+0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee  cclleeaann
+[?2004l
+[?2004lrm -f banker.o banker
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mmake clean[27m
+[7mmake[27m
+[7m./banker 10 5 7[27m
+[7mecho $?[27m[7mmake clean[27m
+[7mmake[27m
+[7m./banker 10 5 7[27m
+[7mecho $?[27m[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+make
+./banker 10 5 7
+echo $?
+[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+make
+./banker 10 5 7
+echo $?
+[?2004l[?2004lrm -f banker.o banker
+rm -f banker.o banker
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+gcc banker.o -o banker
+0
+0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ cp commands.txt commands_backup.txt
+
+for comando in \
+    "RQ 0 1 2" \
+    "RQ 0 1 2 3 4" \
+    "RQ 9 1 2 3" \
+    "RL -1 0 1 1" \
+    "RQ 0 -1 2 3" \
+[7m    "RX 0 1 2 3" \[27m
+[7m    "* 10" \[27m
+[7m    "RQ 0 1 abc 3"[27m
+[7mdo[27m[7m    printf '%s\n' "$comando" > commands.txt[27m[7m    echo "Testando: $comando"[27m[7m    ./banker 10 5 7[27m[7m    echo "Codigo de saida: $?"[27m[7mdone[27m[7mmv commands_backup.txt commands.txt[27mcp commands.txt commands_backup.txt
+
+for comando in \
+    "RQ 0 1 2" \
+    "RQ 0 1 2 3 4" \
+    "RQ 9 1 2 3" \
+    "RL -1 0 1 1" \
+    "RQ 0 -1 2 3" \
+[7m    "RX 0 1 2 3" \[27m
+[7m    "* 10" \[27m
+[7m    "RQ 0 1 abc 3"[27m
+[7mdo[27m[7m    printf '%s\n' "$comando" > commands.txt[27m[7m    echo "Testando: $comando"[27m[7m    ./banker 10 5 7[27m[7m    echo "Codigo de saida: $?"[27m[7mdone[27m[7mmv commands_backup.txt commands.txt[27m[A[A[A    "RX 0 1 2 3" \
+    "* 10" \
+    "RQ 0 1 abc 3"
+do    printf '%s\n' "$comando" > commands.txt    echo "Testando: $comando"    ./banker 10 5 7    echo "Codigo de saida: $?"donemv commands_backup.txt commands.txt[A[A[A    "RX 0 1 2 3" \
+    "* 10" \
+    "RQ 0 1 abc 3"
+do    printf '%s\n' "$comando" > commands.txt    echo "Testando: $comando"    ./banker 10 5 7    echo "Codigo de saida: $?"donemv commands_backup.txt commands.txt
+[?2004l
+[?2004lTestando: RQ 0 1 2
+Testando: RQ 0 1 2
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RQ 0 1 2 3 4
+Testando: RQ 0 1 2 3 4
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RQ 9 1 2 3
+Testando: RQ 9 1 2 3
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RL -1 0 1 1
+Testando: RL -1 0 1 1
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RQ 0 -1 2 3
+Testando: RQ 0 -1 2 3
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RX 0 1 2 3
+Testando: RX 0 1 2 3
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: * 10
+Testando: * 10
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RQ 0 1 abc 3
+Testando: RQ 0 1 abc 3
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7m./banker 10 5 7[27m
+[7mecho $?[27m[7m./banker 10 5 7[27m
+[7mecho $?[27m[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004l[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004l0
+[?2004h0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee  cclleebbaa[K[K[K[Kaann
+
+[?2004l[?2004lrm -f banker.o banker
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  aadddd  bbaannkkeerr..cc
+[?2004l
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mgit diff --cached --check[27m[7mgit diff --cached --check[27mgit diff --cached --check
+[?2004lgit diff --cached --check
+[?2004l[?1h=[?1h=[K[?1l>[K[?1l>[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ccoommmmiitt  --mm  ""vvaalliinnddaannddoo  [K[K[K[K[K[K[K[K[K[K[K[K[K[Kddaannddoo  oo  ffoorrmmaattooii[K[K  ee  ppaarraammeettrrioioss[K[K[K[K[K[Kooss  ddooss  ccoommaannddooss""
+
+[?2004l[?2004l[main b98737a] validando o formato e parametros dos comandos
+[main b98737a] validando o formato e parametros dos comandos
+ 1 file changed, 70 insertions(+), 15 deletions(-)
+ 1 file changed, 70 insertions(+), 15 deletions(-)
+[?2004h[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ssaattuuss[K[K[K[K[K[K[K[Kttaattuuss
+[?2004l
+[?2004lOn branch main
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mcommands.txt[m
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+  (use "git add <file>..." to include in what will be committed)
+	[31mcommands.txt[m
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ppuusshh  oorriiggiinn  mmaaiinn
+[?2004l
+[?2004lEnumerating objects: 5, done.
+Enumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects:  33% (1/3)Delta compression using up to 16 threads
+Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Compressing objects: 100% (3/3), done.
+Writing objects:  33% (1/3)Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 749 bytes | 31.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 749 bytes | 31.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To https://github.com/bielmalta/Deadlock.git
+   53d6501..b98737a  main -> main
+To https://github.com/bielmalta/Deadlock.git
+   53d6501..b98737a  main -> main
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mmake clean[27m
+[7mmake[27m
+[7m./banker 10 5 7[27m
+[7mecho $?[27m[7mmake clean[27m
+[7mmake[27m
+[7m./banker 10 5 7[27m
+[7mecho $?[27m[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+make
+./banker 10 5 7
+echo $?
+[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+make
+./banker 10 5 7
+echo $?
+[?2004l[?2004lrm -f banker.o banker
+rm -f banker.o banker
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+gcc banker.o -o banker
+0
+0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ cp commands.txt commands_backup.txt
+
+for comando in \
+    "RQ 0 1 2" \
+    "RQ 0 1 2 3 4" \
+    "RQ 9 1 2 3" \
+    "RL -1 0 1 1" \
+    "RQ 0 -1 2 3" \
+[7m    "RX 0 1 2 3" \[27m
+[7m    "* 10" \[27m
+[7m    "RQ 0 1 abc 3"[27m
+[7mdo[27m[7m    printf '%s\n' "$comando" > commands.txt[27m[7m    echo "Testando: $comando"[27m[7m    ./banker 10 5 7[27m[7m    echo "Codigo de saida: $?"[27m[7mdone[27m[7mmv commands_backup.txt commands.txt[27mcp commands.txt commands_backup.txt
+
+for comando in \
+    "RQ 0 1 2" \
+    "RQ 0 1 2 3 4" \
+    "RQ 9 1 2 3" \
+    "RL -1 0 1 1" \
+    "RQ 0 -1 2 3" \
+[7m    "RX 0 1 2 3" \[27m
+[7m    "* 10" \[27m
+[7m    "RQ 0 1 abc 3"[27m
+[7mdo[27m[7m    printf '%s\n' "$comando" > commands.txt[27m[7m    echo "Testando: $comando"[27m[7m    ./banker 10 5 7[27m[7m    echo "Codigo de saida: $?"[27m[7mdone[27m[7mmv commands_backup.txt commands.txt[27m[A[A[A    "RX 0 1 2 3" \
+    "* 10" \
+    "RQ 0 1 abc 3"
+do    printf '%s\n' "$comando" > commands.txt    echo "Testando: $comando"    ./banker 10 5 7    echo "Codigo de saida: $?"donemv commands_backup.txt commands.txt
+[?2004l[A[A[A    "RX 0 1 2 3" \
+    "* 10" \
+    "RQ 0 1 abc 3"
+do    printf '%s\n' "$comando" > commands.txt    echo "Testando: $comando"    ./banker 10 5 7    echo "Codigo de saida: $?"donemv commands_backup.txt commands.txt
+[?2004lTestando: RQ 0 1 2
+Testando: RQ 0 1 2
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RQ 0 1 2 3 4
+Testando: RQ 0 1 2 3 4
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RQ 9 1 2 3
+Testando: RQ 9 1 2 3
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RL -1 0 1 1
+Testando: RL -1 0 1 1
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RQ 0 -1 2 3
+Testando: RQ 0 -1 2 3
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RX 0 1 2 3
+Testando: RX 0 1 2 3
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: * 10
+Testando: * 10
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+Testando: RQ 0 1 abc 3
+Testando: RQ 0 1 abc 3
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mv commands_backup.txt commands.txtmv commands_backup.txt commands.txtfor comando in     "RQ 0 1 2"     "RQ 0 1 2 3 4"     "RQ 9 1 2 3"     "RL -1 0 1 1"     "RQ 0 -1 2 3"     "RX 0 1 2 3"     "* 10"     "RQ 0 1 abc 3"; do     printf '%s\n' "$comando" > commands.txt;     echo "Testando: $comando";     ./banker 10 5 7;     echo "Codigo de saida: $?"; donefor comando in     "RQ 0 1 2"     "RQ 0 1 2 3 4"     "RQ 9 1 2 3"     "RL -1 0 1 1"     "RQ 0 -1 2 3"     "RX 0 1 2 3"     "* 10"     "RQ 0 1 abc 3"; do     printf '%s\n' "$comando" > commands.txt;     echo "Testando: $comando";     ./banker 10 5 7;     echo "Codigo de saida: $?"; done[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [57Pcp commands.txt commands_backup.txt
+[K
+[K[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [57Pcp commands.txt commands_backup.txt
+[K
+[K[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cecho $?[Kecho $?[K./banker 10 5 7./banker 10 5 7make[Kmake[K[K[K[K[K[K[K[K[Kmmaakkee  cclleeaann
+[?2004l
+[?2004lrm -f banker.o banker
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ssaattuuss
+
+[?2004l[?2004lgit: 'satus' is not a git command. See 'git --help'.
+
+The most similar command is
+	status
+git: 'satus' is not a git command. See 'git --help'.
+
+The most similar command is
+	status
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ssttaattuuss
+[?2004l
+[?2004lOn branch main
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   banker.c[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mcommands.txt[m
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[31mmodified:   banker.c[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mcommands.txt[m
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ccoommmmiitt  --aa  --[K[K[K[K[K[K[K[K--mm  ""ccoorrrriijjiinnggoo  [K[K[K[K[K[K[K[K[K[K[K[Kggiinnddoo  aa  vvaalliiddaaccaaoo""[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kggiitt  aadddd  bbaannkkeerr..cc
+[?2004l
+[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ccoommmmiitt  --mm  ""ccoorrrriiggiinnddoo  aa  vvaalliiddaaccaaoo""
+[?2004l
+[?2004l[main b8e06e6] corrigindo a validacao
+[main b8e06e6] corrigindo a validacao
+ 1 file changed, 65 insertions(+), 61 deletions(-)
+ 1 file changed, 65 insertions(+), 61 deletions(-)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ppuusshh  oorriiggiinn  mmaaiinn
+[?2004l
+[?2004lEnumerating objects: 5, done.
+Enumerating objects: 5, done.
+Counting objects:  20% (1/5)Counting objects:  20% (1/5)Counting objects:  40% (2/5)Counting objects:  40% (2/5)Counting objects:  60% (3/5)Counting objects:  60% (3/5)Counting objects:  80% (4/5)Counting objects:  80% (4/5)Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Counting objects: 100% (5/5)Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects:  33% (1/3)Compressing objects:  33% (1/3)Compressing objects:  66% (2/3)Compressing objects:  66% (2/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3)Compressing objects: 100% (3/3), done.
+Compressing objects: 100% (3/3), done.
+Writing objects:  33% (1/3)Writing objects:  33% (1/3)Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 723 bytes | 19.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+Writing objects:  66% (2/3)Writing objects: 100% (3/3)Writing objects: 100% (3/3), 723 bytes | 19.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To https://github.com/bielmalta/Deadlock.git
+   b98737a..b8e06e6  main -> main
+To https://github.com/bielmalta/Deadlock.git
+   b98737a..b8e06e6  main -> main
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ssaatt[K[K[K[Kttaattuuss
+[?2004l
+[?2004lOn branch main
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mcommands.txt[m
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	[31mcommands.txt[m
+	[31mcustomer.txt[m
+	[31mevidencias.log[m
+
+nothing added to commit but untracked files present (use "git add" to track)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ddaattee
+
+[?2004l[?2004lSun Nov 15 11:31:35 -03 2026
+Sun Nov 15 11:31:35 -03 2026
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ wwhhooaaiimmii[K[K[K[K[K[Kmmii
+[?2004l
+[?2004lbielmalta
+bielmalta
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ppwwdd
+
+[?2004l/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004l/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee  cclleeaann
+[?2004l
+[?2004lrm -f banker.o banker
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkeeww[K[K
+[?2004l
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7m./banker 10 5 7[27m
+[7mecho $?[27m[7m./banker 10 5 7[27m
+[7mecho $?[27m[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004l[?2004l0
+0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  aadddd  nn[K[Kbbaannkkeerr..cc
+
+[?2004l[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ccoommmmiitt  --mm  ""ccrriiaannddoo  matmatrriizezess  ee  aallggoorriittmmoo  ddee  sseegguurraannccaa""
+[?2004l
+[?2004l[main ca100f8] criando matrizes e algoritmo de seguranca
+[main ca100f8] criando matrizes e algoritmo de seguranca
+ 1 file changed, 119 insertions(+), 35 deletions(-)
+ 1 file changed, 119 insertions(+), 35 deletions(-)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee  cclleeaann
+[?2004l
+[?2004lrm -f banker.o banker
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mmake clean[27m
+[7mmake[27m
+[7m./banker 10 5 7[27m
+[7mecho $?[27m
+[7mcat result.txt[27m[7mmake clean[27m
+[7mmake[27m
+[7m./banker 10 5 7[27m
+[7mecho $?[27m
+[7mcat result.txt[27m[A[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+make
+./banker 10 5 7
+echo $?
+cat result.txt
+[A[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ make clean
+make
+./banker 10 5 7
+echo $?
+cat result.txt
+[?2004l[?2004lrm -f banker.o banker
+rm -f banker.o banker
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+gcc banker.o -o banker
+0
+0
+Allocate to customer 0 the resources 0 2 1
+Allocate to customer 2 the resources 3 0 2
+Allocate to customer 1 the resources 2 0 0
+Allocate to customer 4 the resources 0 0 2
+Release from customer 0 the resources 0 1 1
+Allocate to customer 3 the resources 2 1 1
+MAXIMUM | ALLOCATION | NEED
+7 5 3 | 0 1 0 | 7 4 3
+3 2 2 | 2 0 0 | 1 2 2
+9 0 2 | 3 0 2 | 6 0 0
+2 2 2 | 2 1 1 | 0 1 1
+4 3 3 | 0 0 2 | 4 3 1
+AVAILABLE 3 3 2
+The resources 3 3 2 are not enough to customer 4 request 4 0 0
+Allocate to customer 1Allocate to customer 0 the resources 0 2 1
+Allocate to customer 2 the resources 3 0 2
+Allocate to customer 1 the resources 2 0 0
+Allocate to customer 4 the resources 0 0 2
+Release from customer 0 the resources 0 1 1
+Allocate to customer 3 the resources 2 1 1
+MAXIMUM | ALLOCATION | NEED
+7 5 3 | 0 1 0 | 7 4 3
+3 2 2 | 2 0 0 | 1 2 2
+9 0 2 | 3 0 2 | 6 0 0
+2 2 2 | 2 1 1 | 0 1 1
+4 3 3 | 0 0 2 | 4 3 1
+AVAILABLE 3 3 2
+The resources 3 3 2 are not enough to customer 4 request 4 0 0
+Allocate to customer 1 the resources 1 0 2
+The customer 0 request 0 2 0 was denied because result in an unsafe state
+The customer 2 request 0 1 0 was denied because exceed its maximum allocation
+ the resources 1 0 2
+The customer 0 request 0 2 0 was denied because result in an unsafe state
+The customer 2 request 0 1 0 was denied because exceed its maximum allocation
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [K]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee  cclleeaann
+
+[?2004l[?2004lrm -f banker.o banker
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  aadddd  [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kggiitt  aadddd  bbaannkkeerr..cc
+
+[?2004l[?2004l[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ccoommmmiitt  --mm  ""pprroocceessssaa  ccoommaannddooss  [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kiimmppllkkeemmeenn[K[K[K[K[K[K[K[K[K[Keemmeennttaannddoo  pprroocceessssaammeennttee  dd[K[K[K[K[K[Koo  ddee  ccoommaannddooss  ee  aa  ssaaííss[K[Kddaa  ddoo  rreessuullttaaddoo  ddoo  nnaakkeerr[K[K[K[K[K[K[K[K[K[Kbbaannkkeerr""
+
+[?2004l[?2004l[main d4c4208] implementando processamento de comandos e a saída do resultado do banker
+[main d4c4208] implementando processamento de comandos e a saída do resultado do banker
+ 1 file changed, 240 insertions(+), 259 deletions(-)
+ 1 file changed, 240 insertions(+), 259 deletions(-)
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ggiitt  ppuusshh  oorriiggiinn  mmaaiinn
+[?2004l
+[?2004lEnumerating objects: 8, done.
+Enumerating objects: 8, done.
+Counting objects:  12% (1/8)Counting objects:  12% (1/8)Counting objects:  25% (2/8)Counting objects:  25% (2/8)Counting objects:  37% (3/8)Counting objects:  37% (3/8)Counting objects:  50% (4/8)Counting objects:  50% (4/8)Counting objects:  62% (5/8)Counting objects:  62% (5/8)Counting objects:  75% (6/8)Counting objects:  75% (6/8)Counting objects:  87% (7/8)Counting objects:  87% (7/8)Counting objects: 100% (8/8)Counting objects: 100% (8/8), done.
+Counting objects: 100% (8/8)Counting objects: 100% (8/8), done.
+Delta compression using up to 16 threads
+Compressing objects:  16% (1/6)Delta compression using up to 16 threads
+Compressing objects:  16% (1/6)Compressing objects:  33% (2/6)Compressing objects:  33% (2/6)Compressing objects:  50% (3/6)Compressing objects:  50% (3/6)Compressing objects:  66% (4/6)Compressing objects:  66% (4/6)Compressing objects:  83% (5/6)Compressing objects: 100% (6/6)Compressing objects:  83% (5/6)Compressing objects: 100% (6/6)Compressing objects: 100% (6/6), done.
+Compressing objects: 100% (6/6), done.
+Writing objects:  16% (1/6)Writing objects:  16% (1/6)Writing objects:  33% (2/6)Writing objects:  33% (2/6)Writing objects:  50% (3/6)Writing objects:  50% (3/6)Writing objects:  66% (4/6)Writing objects:  66% (4/6)Writing objects:  83% (5/6)Writing objects:  83% (5/6)Writing objects: 100% (6/6)Writing objects: 100% (6/6)Writing objects: 100% (6/6), 3.75 KiB | 60.00 KiB/s, done.
+Total 6 (delta 3), reused 0 (delta 0), pack-reused 0
+Writing objects: 100% (6/6), 3.75 KiB | 60.00 KiB/s, done.
+Total 6 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/3)[Kremote: Resolving deltas:  33% (1/3)[Kremote: Resolving deltas:  66% (2/3)[Kremote: Resolving deltas: 100% (3/3)[Kremote: Resolving deltas: 100% (3/3), completed with 2 local objects.[K
+remote: Resolving deltas:   0% (0/3)[Kremote: Resolving deltas:  33% (1/3)[Kremote: Resolving deltas:  66% (2/3)[Kremote: Resolving deltas: 100% (3/3)[Kremote: Resolving deltas: 100% (3/3), completed with 2 local objects.[K
+To https://github.com/bielmalta/Deadlock.git
+   b8e06e6..d4c4208  To https://github.com/bielmalta/Deadlock.git
+   b8e06e6..d4c4208  main -> main
+main -> main
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee
+[?2004l
+[?2004lgcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc -Wall -Wextra -std=c11 -c banker.c -o banker.o
+gcc banker.o -o banker
+gcc banker.o -o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ echo "=== TESTE 1: Sem argumentos ==="
+./banker
+echo "Codigo de saida: $?"
+
+[7mecho "=== TESTE 2: Recurso negativo ==="[27m
+[7m./banker 10 -5 7[27m
+[7mecho "Codigo de saida: $?"[27m
+
+[7mecho "=== TESTE 3: Quantidade errada de recursos ==="[27m
+[7m./banker 10 5[27m
+[7mecho "Codigo de saida: $?"[27m[7mecho "=== TESTE 4: Argumento nao numerico ==="[27m[7m./banker 10 abc 7[27m[7mecho "Codigo de saida: $?"[27mecho "=== TESTE 1: Sem argumentos ==="
+./banker
+echo "Codigo de saida: $?"
+
+[7mecho "=== TESTE 2: Recurso negativo ==="[27m
+[7m./banker 10 -5 7[27m
+[7mecho "Codigo de saida: $?"[27m
+
+[7mecho "=== TESTE 3: Quantidade errada de recursos ==="[27m
+[7m./banker 10 5[27m
+[7mecho "Codigo de saida: $?"[27m[7mecho "=== TESTE 4: Argumento nao numerico ==="[27m[7m./banker 10 abc 7[27m[7mecho "Codigo de saida: $?"[27m[A[A[A[A[A[Aecho "=== TESTE 2: Recurso negativo ==="
+./banker 10 -5 7
+echo "Codigo de saida: $?"
+
+echo "=== TESTE 3: Quantidade errada de recursos ==="
+./banker 10 5
+echo "Codigo de saida: $?"echo "=== TESTE 4: Argumento nao numerico ==="./banker 10 abc 7echo "Codigo de saida: $?"
+[A[A[A[A[A[Aecho "=== TESTE 2: Recurso negativo ==="
+./banker 10 -5 7
+echo "Codigo de saida: $?"
+
+echo "=== TESTE 3: Quantidade errada de recursos ==="
+./banker 10 5
+echo "Codigo de saida: $?"echo "=== TESTE 4: Argumento nao numerico ==="./banker 10 abc 7echo "Codigo de saida: $?"
+[?2004l=== TESTE 1: Sem argumentos ===
+[?2004l=== TESTE 1: Sem argumentos ===
+Erro: informe a quantidade de instancias de cada recurso.
+Erro: informe a quantidade de instancias de cada recurso.
+Codigo de saida: 1
+Codigo de saida: 1
+=== TESTE 2: Recurso negativo ===
+=== TESTE 2: Recurso negativo ===
+Erro: quantidade de recursos invalida.
+Erro: quantidade de recursos invalida.
+Codigo de saida: 1
+Codigo de saida: 1
+=== TESTE 3: Quantidade errada de recursos ===
+=== TESTE 3: Quantidade errada de recursos ===
+Erro: formato invalido em customer.txt.
+Erro: formato invalido em customer.txt.
+Codigo de saida: 1
+=== TESTE 4: Argumento nao numerico ===
+Codigo de saida: 1
+=== TESTE 4: Argumento nao numerico ===
+Erro: quantidade de recursos invalida.
+Erro: quantidade de recursos invalida.
+Codigo de saida: 1
+Codigo de saida: 1
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mecho "=== TESTE 5: customer.txt ausente ==="[27m
+[7mmv customer.txt customer_backup.txt[27m
+[7m./banker 10 5 7[27m
+[7mecho "Codigo de saida: $?"[27m
+[7mmv customer_backup.txt customer.txt[27m
+
+[7mecho "=== TESTE 6: commands.txt ausente ==="[27m
+[7mmv commands.txt commands_backup.txt[27m
+[7m./banker 10 5 7[27m
+[7mecho "Codigo de saida: $?"[27m
+[7mmv commands_backup.txt commands.txt[27m[7mecho "=== TESTE 5: customer.txt ausente ==="[27m
+[7mmv customer.txt customer_backup.txt[27m
+[7m./banker 10 5 7[27m
+[7mecho "Codigo de saida: $?"[27m
+[7mmv customer_backup.txt customer.txt[27m
+
+[7mecho "=== TESTE 6: commands.txt ausente ==="[27m
+[7mmv commands.txt commands_backup.txt[27m
+[7m./banker 10 5 7[27m
+[7mecho "Codigo de saida: $?"[27m
+[7mmv commands_backup.txt commands.txt[27m[A[A[A[A[A[A[A[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ echo "=== TESTE 5: customer.txt ausente ==="
+mv customer.txt customer_backup.txt
+./banker 10 5 7
+echo "Codigo de saida: $?"
+mv customer_backup.txt customer.txt
+
+echo "=== TESTE 6: commands.txt ausente ==="
+mv commands.txt commands_backup.txt
+./banker 10 5 7
+ec[A[A[A[A[A[A[A[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ echo "=== TESTE 5: customer.txt ausente ==="
+mv customer.txt customer_backup.txt
+./banker 10 5 7
+echo "Codigo de saida: $?"
+mv customer_backup.txt customer.txt
+
+echo "=== TESTE 6: commands.txt ausente ==="
+mv commands.txt commands_backup.txt
+./banker 10 5 7
+echo "Codigo de saida: $?"
+mv commands_backup.txt commands.txt
+ho "Codigo de saida: $?"
+mv commands_backup.txt commands.txt
+[?2004l=== TESTE 5: customer.txt ausente ===
+[?2004l=== TESTE 5: customer.txt ausente ===
+Erro: nao foi possivel abrir customer.txt.
+Erro: nao foi possivel abrir customer.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+=== TESTE 6: commands.txt ausente ===
+=== TESTE 6: commands.txt ausente ===
+Erro: nao foi possivel abrir commands.txt.
+Erro: nao foi possivel abrir commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ # Criar backups
+cp customer.txt customer_backup.txt
+cp commands.txt commands_backup.txt
+
+echo "=== TESTE 7: customer.txt com recurso extra ==="
+printf '7,5,3,9\n3,2,2\n' > customer.txt
+./banker 10 5 7
+echo "Codigo de saida: $?"
+
+echo "=== TESTE 8: customer.txt com recurso faltando ==="
+printf '7,5\n3,2,2\n' > customer.txt
+./banker 10 5 7echo "Codigo de saida: $?"# Restaurar customer.txtcp customer_backup.txt customer.txtecho "=== TESTE 9: commands.txt com cliente inexistente ==="pri# Criar backups
+cp customer.txt customer_backup.txt
+cp commands.txt commands_backup.txt
+
+echo "=== TESTE 7: customer.txt com recurso extra ==="
+printf '7,5,3,9\n3,2,2\n' > customer.txt
+./banker 10 5 7
+echo "Codigo de saida: $?"
+
+echo "=== TESTE 8: customer.txt com recurso faltando ==="
+printf '7,5\n3,2,2\n' > customer.txt
+./banker 10 5 7echo "Codigo de saida: $?"# Restaurar customer.txtcp customer_backup.txt customer.txtecho "=== TESTE 9: commands.txt com cliente inexistente ==="printf 'RQ 9 0 2 1\n' > commands.txt./banker 10 5 7echo "Codigo de saida: $?"echo "=== TESTE 10: commands.txt com argumento extra ==="printf 'RQ 0 0 2 1 5\n' > commands.txt./banker 10 5 7echo "Codigo de saida: $?"echo "=== TESTE 11: commands.txt com comando desconhecido ==="[7mprintf 'RX 0 0 2 1\n' > commands.txt[27m[7m./banker 10 5 7[27m[7mecho "Codigo de saida: $?"[27m[7m# Restaurar arquivos originais[27m[7mmv customer_backup.txt customer.txt[27m[7mmv commands_backup.txt commands.txtntf 'RQ 9 0 2 1\n' > commands.txt./banker 10 5 7echo "Codigo de saida: $?"echo "=== TESTE 10: commands.txt com argumento extra ==="printf 'RQ 0 0 2 1 5\n' > commands.txt./banker 10 5 7echo "Codigo de saida: $?"echo "=== TESTE 11: commands.txt com comando desconhecido ==="[7mprintf 'RX 0 0 2 1\n' > commands.txt[27m[7m./banker 10 5 7[27m[7mecho "Codigo de saida: $?"[27m[7m# Restaurar arquivos originais[27m[7mmv customer_backup.txt customer.txt[27m[7mmv commands_backup.txt commands.txt[27m[7mecho "=== VERIFICACAO FINAL ==="[27m[7m./banker 10 5 7[27m[7mecho "Codigo de saida: $?"[27m[27m[7mecho "=== VERIFICACAO FINAL ==="[27m[7m./banker 10 5 7[27m[7mecho "Codigo de saida: $?"[27mprintf 'RX 0 0 2 1\n' > commands.txt./banker 10 5 7echo "Codigo de saida: $?"# Restaurar arquivos originaismv customer_backup.txt customer.txtmv commands_backup.txt commands.txtecho "=== VERIFICACAO FINAL ==="./banker 10 5 7echo "Codigo de saida: $?"
+[?2004lprintf 'RX 0 0 2 1\n' > commands.txt./banker 10 5 7echo "Codigo de saida: $?"# Restaurar arquivos originaismv customer_backup.txt customer.txtmv commands_backup.txt commands.txtecho "=== VERIFICACAO FINAL ==="./banker 10 5 7echo "Codigo de saida: $?"
+[?2004l=== TESTE 7: customer.txt com recurso extra ===
+=== TESTE 7: customer.txt com recurso extra ===
+Erro: formato invalido em customer.txt.
+Erro: formato invalido em customer.txt.
+Codigo de saida: 1
+=== TESTE 8: customer.txt com recurso faltando ===
+Codigo de saida: 1
+=== TESTE 8: customer.txt com recurso faltando ===
+Erro: formato invalido em customer.txt.
+Erro: formato invalido em customer.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+=== TESTE 9: commands.txt com cliente inexistente ===
+=== TESTE 9: commands.txt com cliente inexistente ===
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+=== TESTE 10: commands.txt com argumento extra ===
+=== TESTE 10: commands.txt com argumento extra ===
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+=== TESTE 11: commands.txt com comando desconhecido ===
+Codigo de saida: 1
+=== TESTE 11: commands.txt com comando desconhecido ===
+Erro: formato invalido em commands.txt.
+Erro: formato invalido em commands.txt.
+Codigo de saida: 1
+Codigo de saida: 1
+=== VERIFICACAO FINAL ===
+=== VERIFICACAO FINAL ===
+Codigo de saida: 0
+Codigo de saida: 0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mcp commands.txt commands_backup.txt[27m
+
+[7mprintf 'RL 0 1 0 0\n' > commands.txt[27m
+
+[7m./banker 10 5 7[27m
+[7mecho "Codigo de saida: $?"[27m
+[7mcat result.txt[27m
+
+[7mmv commands_backup.txt commands.txt[27m[7mcp commands.txt commands_backup.txt[27m
+
+[7mprintf 'RL 0 1 0 0\n' > commands.txt[27m
+
+[7m./banker 10 5 7[27m
+[7mecho "Codigo de saida: $?"[27m
+[7mcat result.txt[27m
+
+[7mmv commands_backup.txt commands.txt[27m[A[A[A[A[A[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ cp commands.txt commands_backup.txt
+
+printf 'RL 0 1 0 0\n' > commands.txt
+
+./banker 10 5 7
+echo "Codigo de saida: $?"
+[A[A[A[A[A[A[A[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ cp commands.txt commands_backup.txt
+
+printf 'RL 0 1 0 0\n' > commands.txt
+
+./banker 10 5 7
+echo "Codigo de saida: $?"
+cat result.txt
+
+mv commands_backup.txt commands.txt
+[?2004lcat result.txt
+
+mv commands_backup.txt commands.txt
+[?2004lErro: liberacao excede os recursos alocados.
+Erro: liberacao excede os recursos alocados.
+Codigo de saida: 1
+Codigo de saida: 1
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ cp customer.txt customer_backup.txt
+cp commands.txt commands_backup.txt
+
+[7mprintf '3,2\n2,2\n' > customer.txt[27m
+
+[7mprintf 'RQ 0 1 1\nRQ 1 1 0\n*\nRL 0 1 1\n*\n' > commands.txt[27m
+
+[7m./banker 3 3[27m
+[7mecho "Codigo de saida: $?"[27m
+[7mcat result.txt[27m
+
+[7mmv customer_backup.txt customer.txt[27m[7mmv commands_backup.txt commands.txt[27mcp customer.txt customer_backup.txt
+cp commands.txt commands_backup.txt
+
+[7mprintf '3,2\n2,2\n' > customer.txt[27m
+
+[7mprintf 'RQ 0 1 1\nRQ 1 1 0\n*\nRL 0 1 1\n*\n' > commands.txt[27m
+
+[7m./banker 3 3[27m
+[7mecho "Codigo de saida: $?"[27m
+[7mcat result.txt[27m
+
+[7mmv customer_backup.txt customer.txt[27m[7mmv commands_backup.txt commands.txt[27m[A[A[A[A[A[A[A[Aprintf '3,2\n2,2\n' > customer.txt
+
+printf 'RQ 0 1 1\nRQ 1 1 0\n*\nRL 0 1 1\n*\n' > commands.txt
+
+./banker 3 3
+echo "Codigo de saida: $?"
+cat result.txt
+
+mv customer_backup.txt customer.txtmv commands_backup.txt commands.txt
+[A[A[A[A[A[A[A[Aprintf '3,2\n2,2\n' > customer.txt
+
+printf 'RQ 0 1 1\nRQ 1 1 0\n*\nRL 0 1 1\n*\n' > commands.txt
+
+./banker 3 3
+echo "Codigo de saida: $?"
+cat result.txt
+
+mv customer_backup.txt customer.txtmv commands_backup.txt commands.txt
+[?2004l[?2004lCodigo de saida: 0
+Codigo de saida: 0
+Allocate to customer 0 the resources 1 1
+Allocate to customer 1 the resources 1 0
+MAXIMUM | ALLOCATION | NEED
+3 2 | 1 1 | 2 1
+2 2 | 1 0 | 1 2
+AVAILABLE 1 2
+Release from customer 0 the resources 1 1
+MAXIMUM | ALLOCATION | NEED
+3 2 | 0 0 | 3 2
+2 2 | 1 0 | 1 2
+AVAILABLE 2 3
+Allocate to customer 0 the resources 1 1
+Allocate to customer 1 the resources 1 0
+MAXIMUM | ALLOCATION | NEED
+3 2 | 1 1 | 2 1
+2 2 | 1 0 | 1 2
+AVAILABLE 1 2
+Release from customer 0 the resources 1 1
+MAXIMUM | ALLOCATION | NEED
+3 2 | 0 0 | 3 2
+2 2 | 1 0 | 1 2
+AVAILABLE 2 3
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mmv customer_backup.txt customer.txt[27m[7mmv customer_backup.txt customer.txt[27mmv customer_backup.txt customer.txt
+[?2004lmv customer_backup.txt customer.txt
+[?2004lmv: cannot stat 'customer_backup.txt': No such file or directory
+mv: cannot stat 'customer_backup.txt': No such file or directory
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7mls -la *customer*[27m
+[7mcat customer.txt[27m[7mls -la *customer*[27m
+[7mcat customer.txt[27m[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ls -la *customer*
+cat customer.txt
+[?2004l[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ls -la *customer*
+cat customer.txt
+[?2004l-rwxrwxrwx 1 bielmalta bielmalta 29 Nov 15 12:19 [0m[01;32mcustomer.txt[0m
+-rwxrwxrwx 1 bielmalta bielmalta 29 Nov 15 12:19 [0m[01;32mcustomer.txt[0m
+7,5,3
+3,2,2
+9,0,2
+2,2,2
+4,3,37,5,3
+3,2,2
+9,0,2
+2,2,2
+4,3,3[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [7m./banker 10 5 7[27m
+[7mecho $?[27m[7m./banker 10 5 7[27m
+[7mecho $?[27m[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004l[A]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ ./banker 10 5 7
+echo $?
+[?2004l0
+0
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ mmaakkee  cclleeaann
+[?2004l
+[?2004lrm -f banker.o banker
+rm -f banker.o banker
+[?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ [?2004h]0;bielmalta@AlienGabriel: /mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[01;32mbielmalta@AlienGabriel[00m:[01;34m/mnt/c/Users/bielm/OneDrive/Documentos/infra software/Deadlock[00m$ 
